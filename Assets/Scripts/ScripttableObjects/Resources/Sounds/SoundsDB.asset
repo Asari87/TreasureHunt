@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd76ba9272e8454d8e02170cbb1bdf4, type: 3}
+  m_Name: SoundsDB
+  m_EditorClassIdentifier: 
+  menuAmbience:
+  - {fileID: 8300000, guid: 310990f30e44e2f458690bbe1f64746b, type: 3}
+  - {fileID: 8300000, guid: aa7b1a978d416f14a9ebbf8076af5449, type: 3}
+  gameAmbience:
+  - {fileID: 8300000, guid: 597f76897f860d0449e87921e37a927a, type: 3}
+  - {fileID: 8300000, guid: dd1077f4e34873543904f91147b2ba2e, type: 3}
+  buttonHover: {fileID: 8300000, guid: d9ffb104c50de704e9bbcb0955e0a36a, type: 3}
+  buttonPress: {fileID: 8300000, guid: 83547b4c06b340449bc980cdc0756883, type: 3}
