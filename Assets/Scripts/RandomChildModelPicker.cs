@@ -14,6 +14,11 @@ public class RandomChildModelPicker : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        ActivateRandomBuilding();
+    }
+
     private void TurnOffModels()
     {
         foreach (Transform child in transform)
