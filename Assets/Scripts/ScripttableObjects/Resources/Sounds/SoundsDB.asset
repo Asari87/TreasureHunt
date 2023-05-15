@@ -20,3 +20,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: dd1077f4e34873543904f91147b2ba2e, type: 3}
   buttonHover: {fileID: 8300000, guid: d9ffb104c50de704e9bbcb0955e0a36a, type: 3}
   buttonPress: {fileID: 8300000, guid: 83547b4c06b340449bc980cdc0756883, type: 3}
+  coinSounds:
+  - {fileID: 8300000, guid: 351113a17dcbfaa4fbf5aaec1de720a3, type: 3}
+  - {fileID: 8300000, guid: 04cf93acdda80ac4e83d8ac08b1cf71d, type: 3}
+  - {fileID: 8300000, guid: 2e3eeea9281323c4ba31f95894cd207b, type: 3}

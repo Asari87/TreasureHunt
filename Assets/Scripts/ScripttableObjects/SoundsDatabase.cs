@@ -7,11 +7,13 @@ public class SoundsDatabase : ScriptableObject
 {
 
     [Header("Ambiance")]
-    [SerializeField] public AudioClip[] menuAmbience;
-    [SerializeField] public AudioClip[] gameAmbience;
+    public AudioClip[] menuAmbience;
+    public AudioClip[] gameAmbience;
 
     [Header("UI Buttons")]
     public AudioClip buttonHover;
     public AudioClip buttonPress;
 
+    [Header("Coin Sounds")]
+    public AudioClip[] coinSounds;
 }

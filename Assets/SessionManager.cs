@@ -10,6 +10,7 @@ public class SessionManager : MonoBehaviour
     private void Awake()
     {
         gameElements = GetComponentsInChildren<IGameElement>();
+        
     }
     void Start()
     {

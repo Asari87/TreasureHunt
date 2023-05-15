@@ -12,11 +12,19 @@ public class SoundManager : MonoBehaviour
     {
         soundsDB = Resources.Load<SoundsDatabase>("Sounds/SoundsDB");
         UIButtonEventNotifier.OnButtonEvent += HandleButtonEvent;
+        Treasure.OnPickup += PlayCoinsSound;
     }
 
     private void OnDestroy()
     {
         UIButtonEventNotifier.OnButtonEvent -= HandleButtonEvent;
+        Treasure.OnPickup -= PlayCoinsSound;
+    }
+
+    private void PlayCoinsSound(Treasure _)
+    {
+        AudioClip effect = soundsDB.coinSounds[Random.Range(0,soundsDB.coinSounds.Length)];
+        PlayEffect(effect);
     }
 
     private void HandleButtonEvent(ButtonEvent buttonEvent)

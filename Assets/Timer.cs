@@ -35,6 +35,11 @@ public class Timer : MonoBehaviour, IGameElement
         }
     }
 
+    public void AddBonusTime(float bonus)
+    {
+        timeLeft += bonus;
+    }
+
     public void OnGameStart(Action callback)
     {
         OnTimeout = callback;
