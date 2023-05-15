@@ -28,6 +28,7 @@ public class TreasureSpawner : MonoBehaviour
         {
             treasurePool[i] = Instantiate(treasures[i].prefab);
             treasurePool[i].SetScore(treasures[i].score);
+            treasurePool[i].SetTimeBonus(treasures[i].timeBonus);
         }
     }
 

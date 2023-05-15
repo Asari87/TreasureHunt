@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Copper
   m_EditorClassIdentifier: 
   prefab: {fileID: 2498512306005846842, guid: 47d4956e8b6b4de479e97734cd97b4d7, type: 3}
-  score: 1
+  score: 10
+  timeBonus: 1

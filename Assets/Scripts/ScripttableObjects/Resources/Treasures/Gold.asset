@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Gold
   m_EditorClassIdentifier: 
   prefab: {fileID: 2498512306005846842, guid: 64276b477b2e8114798075be32320319, type: 3}
-  score: 5
+  score: 100
+  timeBonus: 5

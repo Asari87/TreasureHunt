@@ -7,4 +7,5 @@ public class TreasureSO : ScriptableObject
 {
     public Treasure prefab;
     public int score;
+    public int timeBonus;
 }
