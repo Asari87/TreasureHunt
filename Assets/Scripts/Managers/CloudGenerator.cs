@@ -25,7 +25,7 @@ public class CloudGenerator : MonoBehaviour
         cloudPool= new Transform[numberOfClouds];
         for (int i = 0; i < numberOfClouds; i++)
         {
-            cloudPool[i] = Instantiate(cloudPrefabs[Random.Range(0,cloudPrefabs.Length)]);
+            cloudPool[i] = Instantiate(cloudPrefabs[Random.Range(0,cloudPrefabs.Length)],transform);
             cloudPool[i].gameObject.SetActive(false);
         }
     }
