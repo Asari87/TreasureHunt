@@ -19,7 +19,7 @@ public class TreasurePickupHandler : MonoBehaviour
     private void HandleTreasure(Treasure treasure)
     {
         Debug.Log($"Pickup {treasure}!");
-        timer.AddBonusTime(treasure.GetScore());
+        timer.AddBonusTime(treasure.GetTimeBonus());
     }
 
     
