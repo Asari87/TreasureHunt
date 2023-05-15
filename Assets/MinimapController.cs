@@ -3,32 +3,23 @@ using Cinemachine;
 using System.Runtime.CompilerServices;
 
 using UnityEngine;
+[ExecuteAlways]
 public class MinimapController : MonoBehaviour
 {
     [SerializeField] private float height;
-    private GameObject player;
+    [SerializeField] private Camera minimapCam;
     
-    private CinemachineVirtualCamera minimapCam;
 
     private void Awake()
     {
-        minimapCam = GetComponent<CinemachineVirtualCamera>();
-    }
-    void Start()
-    {
-        player = GameObject.FindWithTag("Player");
-        if (player == null || minimapCam == null)
-            throw new System.Exception("Error initializing minimap camera!");
-
-        CinemachineTransposer transposer = minimapCam.GetCinemachineComponent<CinemachineTransposer>();
-        transposer.m_FollowOffset = new Vector3(0, height, 0);
-        minimapCam.Follow = player.transform;
-        minimapCam.LookAt = player.transform;
+        minimapCam.transform.position = transform.position + Vector3.up * height;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void LateUpdate()
     {
-        
+        minimapCam.transform.position = transform.position + Vector3.up * height;
+        Vector3 currentRotation = transform.rotation.eulerAngles;
+        minimapCam.transform.rotation = Quaternion.Euler(90,currentRotation.y,0);
+
     }
 }
