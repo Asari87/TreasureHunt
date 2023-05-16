@@ -40,16 +40,25 @@ public class Timer : MonoBehaviour, IGameElement
         timeLeft += bonus;
     }
 
+    #region IGameElement
     public void OnGameStart(Action callback)
     {
         OnTimeout = callback;
         timeLeft = maxStartTime;
         isGameActive = true;
     }
-
+    public void OnGamePaused()
+    {
+        isGameActive = false;
+    }
+    public void OnGameResume()
+    {
+        isGameActive = true;
+    }
     public void OnGameStop()
     {
         timeLeft = 0;
         isGameActive = false;
     }
+    #endregion
 }

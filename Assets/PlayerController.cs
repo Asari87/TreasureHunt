@@ -22,8 +22,17 @@ public class PlayerController : MonoBehaviour
     private void HandleLoadedScene(Scene currentScene, LoadSceneMode _)
     {
         if (currentScene.name.Equals(Scenes.GameScene.ToString()))
-            moveProvider.moveSpeed = movementSpeed;
+            EnableMovement();
         else
-            moveProvider.moveSpeed = 0;
+            DisableMovement();
+    }
+
+    public void DisableMovement()
+    {
+        moveProvider.moveSpeed = 0;
+    }
+    public void EnableMovement()
+    {
+        moveProvider.moveSpeed = movementSpeed;
     }
 }

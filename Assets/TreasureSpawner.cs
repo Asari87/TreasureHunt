@@ -5,14 +5,16 @@ using UnityEngine;
 
 using Random = UnityEngine.Random;
 
-public class TreasureSpawner : MonoBehaviour
+public class TreasureSpawner : MonoBehaviour, IGameElement
 {
     private Transform[] spawnPoints;
     private TreasureSO[] treasures;
     private Treasure[] treasurePool;
     private int lastIndex;
+    private bool canSpawn;
     private void Awake()
     {
+        canSpawn = false;
         try
         {
             GetTreasures();
@@ -30,28 +32,61 @@ public class TreasureSpawner : MonoBehaviour
             treasurePool[i].SetScore(treasures[i].score);
             treasurePool[i].SetTimeBonus(treasures[i].timeBonus);
         }
-    }
 
-    private void InitSpawnPoints()
-    {
-        spawnPoints = new Transform[transform.childCount];
-        if (spawnPoints.Length < 2)
-            throw new Exception("Not enough spawn points for treasures!!!");
-        for (int i = 0; i < transform.childCount; i++)
+        //local functions
+        void InitSpawnPoints()
         {
-            spawnPoints[i] = transform.GetChild(i);
+            spawnPoints = new Transform[transform.childCount];
+            if (spawnPoints.Length < 2)
+                throw new Exception("Not enough spawn points for treasures!!!");
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                spawnPoints[i] = transform.GetChild(i);
+            }
+        }
+
+        void GetTreasures()
+        {
+            treasures = Resources.LoadAll<TreasureSO>("Treasures");
+            if (treasures.Length == 0)
+                throw new Exception("No treasures to hunt!!!");
         }
     }
 
-    private void GetTreasures()
+    #region IGameElement
+    public void OnGameStart(Action callback)
     {
-        treasures = Resources.LoadAll<TreasureSO>("Treasures");
-        if (treasures.Length == 0)
-            throw new Exception("No treasures to hunt!!!");
+        canSpawn = true;
+    }
+    public void OnGamePaused()
+    {
+        canSpawn = false;
+    }
+    public void OnGameResume()
+    {
+        canSpawn = true;
+    }
+    public void OnGameStop()
+    {
+        canSpawn = false;
+        Cleanup();
+    }
+    #endregion
+
+    private void Cleanup()
+    {
+        foreach(Treasure treasure in treasurePool)
+        {
+            Destroy(treasure.gameObject);
+        }
+        treasurePool = null;
+        treasures = null;
+        spawnPoints = null;
     }
 
     void Update()
     {
+        if (!canSpawn) return;
         //check if any treasure is visible
         if (treasurePool.Any(t => t.gameObject.activeSelf)) return;
         //pick a random spawn point
@@ -66,4 +101,6 @@ public class TreasureSpawner : MonoBehaviour
         randomPick.gameObject.SetActive(true);
 
     }
+
+
 }

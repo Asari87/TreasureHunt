@@ -6,9 +6,10 @@ using UnityEngine;
 public class SessionManager : MonoBehaviour
 {
     [SerializeField] private IGameElement[] gameElements;
-
+    private PlayerController playerController;
     private void Awake()
     {
+        playerController = FindObjectOfType<PlayerController>();
         gameElements = GetComponentsInChildren<IGameElement>();
         
     }
@@ -19,6 +20,7 @@ public class SessionManager : MonoBehaviour
         {
             gameElement.OnGameStart(HandleGameOver);
         }
+        playerController.EnableMovement();
     }
 
     private void HandleGameOver()
@@ -28,11 +30,30 @@ public class SessionManager : MonoBehaviour
         {
             gameElement.OnGameStop();
         }
+        playerController.DisableMovement();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PauseGame()
     {
-        
+        foreach (IGameElement gameElement in gameElements)
+        {
+            gameElement.OnGamePaused();
+        }
+        playerController.DisableMovement();
+
+    }
+    public void ResumeGame()
+    {
+        foreach (IGameElement gameElement in gameElements)
+        {
+            gameElement.OnGameResume();
+        }
+        playerController.EnableMovement();
+
+    }
+
+    internal void EndGame()
+    {
+        HandleGameOver();
     }
 }
