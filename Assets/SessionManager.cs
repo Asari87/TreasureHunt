@@ -31,6 +31,7 @@ public class SessionManager : MonoBehaviour
             gameElement.OnGameStop();
         }
         playerController.DisableMovement();
+        FindObjectOfType<SceneHandler>().LoadScene(Scenes.GameOverScene);
     }
 
     public void PauseGame()

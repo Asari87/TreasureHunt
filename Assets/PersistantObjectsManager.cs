@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,5 +15,15 @@ public class PersistantObjectsManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
+
+        EnableChildObjects();
+    }
+
+    private void EnableChildObjects()
+    {
+        foreach(Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
     }
 }

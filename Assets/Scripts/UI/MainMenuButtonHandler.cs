@@ -9,7 +9,7 @@ public class MainMenuButtonHandler : MonoBehaviour
     [SerializeField] private Button playButton;
     [SerializeField] private Button quitButton;
     private SceneHandler sceneHandler;
-    private void Awake()
+    private void Start()
     {
         sceneHandler = FindObjectOfType<SceneHandler>();
         playButton.onClick.AddListener(() => sceneHandler.LoadScene(Scenes.GameScene));
