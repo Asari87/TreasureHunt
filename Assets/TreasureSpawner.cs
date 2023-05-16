@@ -31,6 +31,7 @@ public class TreasureSpawner : MonoBehaviour, IGameElement
             treasurePool[i] = Instantiate(treasures[i].prefab);
             treasurePool[i].SetScore(treasures[i].score);
             treasurePool[i].SetTimeBonus(treasures[i].timeBonus);
+            treasurePool[i].gameObject.SetActive(false);
         }
 
         //local functions
